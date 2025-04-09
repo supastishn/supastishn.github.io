@@ -1,0 +1,128 @@
+---
+layout: default
+permalink: /404.html
+---
+
+<div class="not-found">
+  <h1>404: Page Not Found</h1>
+  
+  <div class="error-message">
+    <p>Oops! The page you're looking for doesn't exist.</p>
+    <p>But don't worry, here are some comics you might enjoy instead:</p>
+  </div>
+  
+  <div class="comic-suggestions">
+    {% assign sorted_comics = site.comics | sort: 'date' %}
+    {% assign latest_comic = sorted_comics | last %}
+    {% assign first_comic = sorted_comics | first %}
+    {% assign random_offset = site.time | date: "%s" | modulo: sorted_comics.size %}
+    {% assign random_comic = sorted_comics[random_offset] %}
+    
+    <div class="suggestion">
+      <h3>Latest Comic</h3>
+      <a href="{{ latest_comic.url }}" class="suggestion-link">
+        {{ latest_comic.title }}
+      </a>
+    </div>
+    
+    <div class="suggestion">
+      <h3>First Comic</h3>
+      <a href="{{ first_comic.url }}" class="suggestion-link">
+        {{ first_comic.title }}
+      </a>
+    </div>
+    
+    <div class="suggestion">
+      <h3>Random Comic</h3>
+      <a href="{{ random_comic.url }}" class="suggestion-link">
+        {{ random_comic.title }}
+      </a>
+    </div>
+  </div>
+  
+  <div class="navigation-options">
+    <a href="/" class="home-link">Go to Homepage</a>
+    <a href="/comics/" class="archive-link">Browse All Comics</a>
+  </div>
+</div>
+
+<style>
+  .not-found {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .error-message {
+    margin: 20px 0 30px;
+    color: #666;
+  }
+  
+  .comic-suggestions {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    flex-wrap: wrap;
+  }
+  
+  .suggestion {
+    width: 30%;
+    min-width: 200px;
+    margin: 10px auto;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .suggestion h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .suggestion-link {
+    display: block;
+    padding: 8px 0;
+    text-decoration: none;
+    color: #0366d6;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    transition: color 0.2s;
+  }
+  
+  .suggestion-link:hover {
+    color: #04b;
+    text-decoration: underline;
+  }
+  
+  .navigation-options {
+    margin-top: 30px;
+  }
+  
+  .navigation-options a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .navigation-options a:hover {
+    background-color: #ddd;
+  }
+  
+  @media (max-width: 700px) {
+    .comic-suggestions {
+      flex-direction: column;
+    }
+    
+    .suggestion {
+      width: 90%;
+      margin: 10px auto;
+    }
+  }
+</style>

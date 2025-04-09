@@ -1,0 +1,199 @@
+---
+layout: default
+---
+{% assign sorted_comics = site.comics | sort: 'date' %}
+{% for comic in site.comics | sort: 'date' %}
+  {% if comic.url == page.url %}
+    {% assign comic_index = forloop.index %}
+    {% assign total_comics = forloop.length %}
+    {% assign first_comic = sorted_comics[0] %}
+    {% assign last_comic = sorted_comics[forloop.length | minus: 1] %}
+    {% if forloop.first %}
+      {% assign prev_comic = nil %}
+    {% else %}
+      {% assign prev_index = forloop.index0 | minus: 1 %}
+      {% assign prev_comic = sorted_comics[prev_index] %}
+    {% endif %}
+    {% if forloop.last %}
+      {% assign next_comic = nil %}
+    {% else %}
+      {% assign next_index = forloop.index0 | plus: 1 %}
+      {% assign next_comic = sorted_comics[next_index] %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="comic-page">
+  <div class="comic-number">Comic #{{ comic_index }} of {{ total_comics }}</div>
+  
+  <div id="comic-container" 
+       data-title="{{ page.title }}" 
+       data-image="{{ page.comic_image }}" 
+       data-alt="{{ page.alt_text }}" 
+       data-hover="{{ page.hover_text }}"
+       data-caption="{{ page.caption }}">
+    <!-- Comic will be rendered here by React -->
+  </div>
+  
+  <div class="comic-date">Published on {{ page.date | date: "%B %d, %Y" }}</div>
+  
+  {% if page.content %}
+  <div class="comic-content">
+    {{ content }}
+  </div>
+  {% endif %}
+  
+  <div class="comic-navigation">
+    <div class="nav-buttons">
+      <a href="{{ first_comic.url }}" class="first-comic" title="First Comic">&laquo;</a>
+      {% if prev_comic %}
+        <a href="{{ prev_comic.url }}" class="prev-comic" title="Previous Comic">&#8249; Previous</a>
+      {% else %}
+        <span class="prev-comic disabled">&#8249; Previous</span>
+      {% endif %}
+      
+      <a href="/comics/" class="all-comics">All Comics</a>
+      
+      {% if next_comic %}
+        <a href="{{ next_comic.url }}" class="next-comic" title="Next Comic">Next &#8250;</a>
+      {% else %}
+        <span class="next-comic disabled">Next &#8250;</span>
+      {% endif %}
+      <a href="{{ last_comic.url }}" class="last-comic" title="Latest Comic">&raquo;</a>
+    </div>
+    
+    <div class="comic-jump">
+      <form id="comic-jumper" action="javascript:void(0);" onsubmit="jumpToComic(this)">
+        <label for="comic-number">Go to comic #:</label>
+        <input type="number" id="comic-number" min="1" max="{{ total_comics }}" placeholder="{{ comic_index }}">
+        <button type="submit">Go</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- React Scripts -->
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="/assets/js/comic.js"></script>
+
+<script>
+  // Fix for JavaScript mixed with Jekyll template tags
+  function jumpToComic(form) {
+    const comicNumber = parseInt(document.getElementById('comic-number').value, 10);
+    const maxComics = parseInt("{{ total_comics }}", 10);
+    
+    if (comicNumber && comicNumber >= 1 && comicNumber <= maxComics) {
+      // Create array of comic URLs from Jekyll data
+      const sortedComics = [
+      {% for comic in sorted_comics %}
+        "{{ comic.url }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+      ];
+      
+      window.location.href = sortedComics[comicNumber - 1];
+    }
+  }
+</script>
+
+<!-- Comic-specific styles -->
+<style>
+  .comic-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .comic-number {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .comic-date {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+  }
+  
+  .comic-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .comic-image-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .comic-image {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comic-caption {
+    font-style: italic;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .comic-navigation {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .comic-navigation a, .comic-navigation button {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .comic-navigation a:hover, .comic-navigation button:hover {
+    background-color: #ddd;
+  }
+  
+  .disabled {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    color: #aaa;
+    border-radius: 4px;
+    cursor: not-allowed;
+  }
+  
+  .comic-jump {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .comic-jump input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .comic-content {
+    margin: 30px 0;
+    line-height: 1.6;
+  }
+</style>
