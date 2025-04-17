@@ -337,8 +337,9 @@ layout: default
   }
   
   .comic-image {
-    max-width: 100%;
-    height: auto;
+    /* max-width: 100%; Remove responsiveness */
+    width: 256px; /* Set fixed width */
+    height: 256px; /* Set fixed height */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: block; /* Prevents potential extra space below image */
     margin: 0 auto; /* Ensure centering */
