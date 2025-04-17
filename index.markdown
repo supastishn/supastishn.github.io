@@ -42,6 +42,8 @@ layout: default
   </div>
 </div>
 
+<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
 <!-- Comics data for JavaScript -->
 <script>
   // Store all comics data for client-side navigation
