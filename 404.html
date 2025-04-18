@@ -17,24 +17,26 @@ permalink: /404.html
     {% assign first_comic = sorted_comics | first %}
     {% assign random_offset = site.time | date: "%s" | modulo: sorted_comics.size %}
     {% assign random_comic = sorted_comics[random_offset] %}
+    {% assign total_comics = sorted_comics.size %}
+    {% assign random_comic_number = random_offset | plus: 1 %}
     
     <div class="suggestion">
       <h3>Latest Comic</h3>
-      <a href="{{ latest_comic.url }}" class="suggestion-link">
+      <a href="/?comic={{ total_comics }}" class="suggestion-link">
         {{ latest_comic.title }}
       </a>
     </div>
     
     <div class="suggestion">
       <h3>First Comic</h3>
-      <a href="{{ first_comic.url }}" class="suggestion-link">
+      <a href="/?comic=1" class="suggestion-link">
         {{ first_comic.title }}
       </a>
     </div>
     
     <div class="suggestion">
       <h3>Random Comic</h3>
-      <a href="{{ random_comic.url }}" class="suggestion-link">
+      <a href="/?comic={{ random_comic_number }}" class="suggestion-link">
         {{ random_comic.title }}
       </a>
     </div>
@@ -42,7 +44,7 @@ permalink: /404.html
   
   <div class="navigation-options">
     <a href="/" class="home-link">Go to Homepage</a>
-    <a href="/comics/" class="archive-link">Browse All Comics</a>
+    <a href="/all-comics/" class="archive-link">Browse All Comics</a>
   </div>
 </div>
 
