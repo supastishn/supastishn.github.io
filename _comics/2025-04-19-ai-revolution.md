@@ -1,6 +1,6 @@
 ---
 layout: comic
-title: "Debugging"
+title: "AI Revolution"
 date: 2025-04-19 4:49:00 +0000
 comic_image: /assets/images/comics/ai-revolution.png
 hover_text: "The irony is intended"
