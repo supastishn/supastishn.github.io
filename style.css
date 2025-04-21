@@ -11,7 +11,7 @@ h1 {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(2, 1fr); /* Two columns per row */
     gap: 20px; /* Spacing between items */
     padding: 20px;
 }
