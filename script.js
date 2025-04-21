@@ -6,7 +6,7 @@ if (kartingGameItem) {
     // Add a click event listener
     kartingGameItem.addEventListener('click', function() {
         // Redirect the user to the specified URL
-        window.location.href = 'https://supastishn.github.io/karting-gme';
+        window.location.href = 'https://supastishn.github.io/karting-game';
     });
 } else {
     console.error("Element with ID 'karting-game' not found.");
