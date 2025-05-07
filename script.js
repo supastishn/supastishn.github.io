@@ -22,7 +22,7 @@ const supatubeLinkItem = document.getElementById('supatube-link');
 
 if (supatubeLinkItem) {
     supatubeLinkItem.addEventListener('click', function() {
-        window.location.href = 'https://supastishn.github.io/supatube/';
+        window.location.href = 'https://supastishn.github.io/supatube';
     });
 } else {
     console.error("Element with ID 'supatube-link' not found.");
