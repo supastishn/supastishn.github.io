@@ -27,3 +27,13 @@ if (supatubeLinkItem) {
 } else {
     console.error("Element with ID 'supatube-link' not found.");
 }
+
+const draconicChatLinkItem = document.getElementById('draconic-chat-link');
+
+if (draconicChatLinkItem) {
+    draconicChatLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/draconic-chat';
+    });
+} else {
+    console.error("Element with ID 'draconic-chat-link' not found.");
+}
