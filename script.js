@@ -12,7 +12,7 @@ const genocideInfoLinkItem = document.getElementById('genocide-info-link');
 
 if (genocideInfoLinkItem) {
     genocideInfoLinkItem.addEventListener('click', function() {
-        window.location.href = 'https://supastishn.github.io/palestinian-genocide';
+        window.location.href = 'https://www.amnesty.org/en/wp-content/uploads/2024/12/MDE1586682024ENGLISH.pdf';
     });
 } else {
     console.error("Element with ID 'genocide-info-link' not found.");
