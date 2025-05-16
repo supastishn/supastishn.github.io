@@ -37,3 +37,13 @@ if (draconicChatLinkItem) {
 } else {
     console.error("Element with ID 'draconic-chat-link' not found.");
 }
+
+const mcuSimLinkItem = document.getElementById('mcusim-link');
+
+if (mcuSimLinkItem) {
+    mcuSimLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/mcu-sim';
+    });
+} else {
+    console.error("Element with ID 'mcusim-link' not found.");
+}
