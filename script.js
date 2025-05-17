@@ -57,3 +57,13 @@ if (mcuSimLinkItem) {
 } else {
     console.error("Element with ID 'mcusim-link' not found.");
 }
+
+const examPracticeLinkItem = document.getElementById('exam-practice-link');
+
+if (examPracticeLinkItem) {
+    examPracticeLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/exam-practice';
+    });
+} else {
+    console.error("Element with ID 'exam-practice-link' not found.");
+}
