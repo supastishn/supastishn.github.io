@@ -67,3 +67,13 @@ if (examPracticeLinkItem) {
 } else {
     console.error("Element with ID 'exam-practice-link' not found.");
 }
+
+const conlangTranslatorLinkItem = document.getElementById('conlang-translator-link');
+
+if (conlangTranslatorLinkItem) {
+    conlangTranslatorLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/conlang-translator';
+    });
+} else {
+    console.error("Element with ID 'conlang-translator-link' not found.");
+}
