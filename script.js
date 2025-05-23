@@ -77,3 +77,13 @@ if (conlangTranslatorLinkItem) {
 } else {
     console.error("Element with ID 'conlang-translator-link' not found.");
 }
+
+const classroomCatsLinkItem = document.getElementById('classroom-cats-link');
+
+if (classroomCatsLinkItem) {
+    classroomCatsLinkItem.addEventListener('click', function() {
+        window.open('https://supastishn.github.io/classroom-cats', '_blank');
+    });
+} else {
+    console.error("Element with ID 'classroom-cats-link' not found.");
+}
