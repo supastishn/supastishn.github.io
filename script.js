@@ -87,3 +87,13 @@ if (classroomCatsLinkItem) {
 } else {
     console.error("Element with ID 'classroom-cats-link' not found.");
 }
+
+const fallacyDetectorLinkItem = document.getElementById('fallacy-detector-link');
+
+if (fallacyDetectorLinkItem) {
+    fallacyDetectorLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/fallacy-detector';
+    });
+} else {
+    console.error("Element with ID 'fallacy-detector-link' not found.");
+}
