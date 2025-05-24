@@ -12,7 +12,7 @@ const genocideInfoLinkItem = document.getElementById('genocide-info-link');
 
 if (genocideInfoLinkItem) {
     genocideInfoLinkItem.addEventListener('click', function() {
-        window.location.href = 'https://supastishn.github.io/palestinian-genocide';
+        window.location.href = 'https://supastishn.github.io/amnesty-summary';
     });
 } else {
     console.error("Element with ID 'genocide-info-link' not found.");
