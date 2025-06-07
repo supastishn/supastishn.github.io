@@ -97,3 +97,23 @@ if (fallacyDetectorLinkItem) {
 } else {
     console.error("Element with ID 'fallacy-detector-link' not found.");
 }
+
+const wikicheckLinkItem = document.getElementById('wikicheck-link');
+
+if (wikicheckLinkItem) {
+    wikicheckLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/wikicheck';
+    });
+} else {
+    console.error("Element with ID 'wikicheck-link' not found.");
+}
+
+const geolocatorLinkItem = document.getElementById('geolocator-link');
+
+if (geolocatorLinkItem) {
+    geolocatorLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/geolocator';
+    });
+} else {
+    console.error("Element with ID 'geolocator-link' not found.");
+}
