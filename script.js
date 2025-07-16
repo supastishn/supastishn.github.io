@@ -117,3 +117,13 @@ if (geolocatorLinkItem) {
 } else {
     console.error("Element with ID 'geolocator-link' not found.");
 }
+
+const chessLinkItem = document.getElementById('chess-link');
+
+if (chessLinkItem) {
+    chessLinkItem.addEventListener('click', function() {
+        window.location.href = 'https://supastishn.github.io/chess-bot-maker';
+    });
+} else {
+    console.error("Element with ID 'chess-link' not found.");
+}
